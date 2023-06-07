@@ -14,6 +14,11 @@
 
     <!-- font -->
 
+    <script
+      src="https://kit.fontawesome.com/1a4dd4a998.js"
+      crossorigin="anonymous"
+    ></script>
+
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,13 +30,28 @@
         <div class="list">
           <section class="movie-grid">
             <article class="movie-card">
-              <a href="#" class="image-container">
-                <img
-                  class="movie-image"
-                  src="./images/movie-image-1.jpg"
-                  alt="movie-image-1"
-                />
-              </a>
+              <div class="image-container">
+                <div>
+                  <a href="./single-movie.html">
+                    <img class="movie-image" src="./images/movie-image-1.jpg" />
+                  </a>
+                </div>
+                <div class="movie-item__title-in">
+                  <div class="cate">
+                    <span>
+                      <a href="#">Sci-fi</a>
+                    </span>
+                  </div>
+                  <h6 class="movie-item__title-in__heading">
+                    <a href="#">Interstellar</a>
+                  </h6>
+                  <p>
+                    <i class="fa-fw fa-md fa-star fa"></i>
+                    <span>7.4</span>
+                    /10
+                  </p>
+                </div>
+              </div>
               <div class="detail-container">
                 <p class="movie-heading">MULHOLLAND PRIDE (2015)</p>
                 <hr class="hr-text" />
@@ -63,9 +83,22 @@
               SEARCH FOR GENRES
               <hr />
             </h3>
+            <div class="search-form">
+              <form action="#">
+                <label for="movie-name">Movie genres:</label>
+                <input
+                  name="movie-name"
+                  type="text"
+                  required
+                  placeholder="Enter keywords"
+                />
+                <button type="submit">SEARCH</button>
+              </form>
+            </div>
           </section>
         </aside>
       </div>
     </main>
+    <script src="./script.js"></script>
   </body>
 </html>
