@@ -350,7 +350,140 @@ function createMovieDetail(
   return container;
 }
 
-// createMovieItem({ ...response[0].data[0] });
+function createMovieCard2(
+  title,
+  imageSrc,
+  category,
+  rating,
+  description,
+  duration,
+  genres,
+  movieHeading,
+  imdbRating,
+  mood
+) {
+  // Create article element
+  const article = document.createElement("article");
+  article.classList.add("movie-card");
+
+  // Create image container
+  const imageContainer = document.createElement("div");
+  imageContainer.classList.add("image-container");
+  article.appendChild(imageContainer);
+
+  // Create anchor tag for movie link
+  const movieLink = document.createElement("a");
+  movieLink.href = "./single-movie.html";
+  imageContainer.appendChild(movieLink);
+
+  // Create movie image
+  const movieImage = document.createElement("img");
+  movieImage.classList.add("movie-image");
+  movieImage.src = imageSrc;
+  movieLink.appendChild(movieImage);
+
+  // Create movie item title
+  const movieItemTitle = document.createElement("div");
+  movieItemTitle.classList.add("movie-item__title-in");
+  imageContainer.appendChild(movieItemTitle);
+
+  // Create category span
+  const categorySpan = document.createElement("span");
+  const categoryLink = document.createElement("a");
+  categoryLink.href = "#";
+  categoryLink.textContent = category;
+  categorySpan.appendChild(categoryLink);
+  movieItemTitle.appendChild(categorySpan);
+
+  // Create movie title heading
+  const movieTitleHeading = document.createElement("h6");
+  const movieTitleLink = document.createElement("a");
+  movieTitleLink.href = "#";
+  movieTitleLink.textContent = title;
+  movieTitleHeading.appendChild(movieTitleLink);
+  movieItemTitle.appendChild(movieTitleHeading);
+
+  // Create movie rating
+  const movieRating = document.createElement("p");
+  const movieRatingIcon = document.createElement("i");
+  movieRatingIcon.classList.add("fa-fw", "fa-md", "fa-star", "fa");
+  const ratingText = document.createTextNode(rating);
+  movieRating.appendChild(movieRatingIcon);
+  movieRating.appendChild(ratingText);
+  movieItemTitle.appendChild(movieRating);
+
+  // Create detail container
+  const detailContainer = document.createElement("div");
+  detailContainer.classList.add("detail-container");
+  article.appendChild(detailContainer);
+
+  // Create movie heading
+  const movieHeadingElement = document.createElement("p");
+  movieHeadingElement.classList.add("movie-heading");
+  movieHeadingElement.textContent = movieHeading;
+  detailContainer.appendChild(movieHeadingElement);
+
+  // Create horizontal rule with text
+  const hr = document.createElement("hr");
+  hr.classList.add("hr-text");
+  detailContainer.appendChild(hr);
+
+  // Create movie info
+  const movieInfo = document.createElement("div");
+  movieInfo.classList.add("info");
+  const infoText = document.createElement("span");
+  infoText.textContent = duration + " | " + genres;
+  movieInfo.appendChild(infoText);
+  detailContainer.appendChild(movieInfo);
+
+  // Create movie description
+  const movieDescription = document.createElement("p");
+  movieDescription.classList.add("description");
+  movieDescription.textContent = description;
+  detailContainer.appendChild(movieDescription);
+
+  // Create movie rate and mood
+  const movieRate = document.createElement("p");
+  movieRate.classList.add("rate");
+  movieRate.textContent = "Rating: " + imdbRating + " | Mood: " + mood;
+  detailContainer.appendChild(movieRate);
+
+  // Create button container
+  const buttonContainer = document.createElement("div");
+  buttonContainer.classList.add("buttons");
+  detailContainer.appendChild(buttonContainer);
+
+  // Create trailer button
+  const trailerButton = document.createElement("button");
+  trailerButton.type = "button";
+  trailerButton.classList.add("button");
+  trailerButton.textContent = "TRAILER";
+  buttonContainer.appendChild(trailerButton);
+
+  // Create IMDb button
+  const imdbButton = document.createElement("button");
+  imdbButton.type = "button";
+  imdbButton.classList.add("button");
+  imdbButton.textContent = "IMDB";
+  buttonContainer.appendChild(imdbButton);
+
+  // Return the created article element
+  return article;
+}
+
+// Usage example
+const movie = createMovieCard2(
+  "Interstellar",
+  "./images/movie-image-1.jpg",
+  "Sci-fi",
+  "7.4",
+  "In Gotham City, mentally troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution and bloody crime. This path brings him face-to-face with his alter-ego: the Joker.",
+  "2h 2min",
+  "Crime, Drama, Thriller",
+  "MULHOLLAND PRIDE (2015)",
+  "9.0",
+  "Dark"
+);
 
 function submitForm(event) {
   removeAllCards();
@@ -361,6 +494,8 @@ function submitForm(event) {
     if (apiData.genres.toLocaleLowerCase() === genres.toLocaleLowerCase()) {
       for (const data of apiData.data) {
         createMovieItem({ ...data });
+        // movieGrid.appendChild(movie);
+        // console.log(data, "movie");
       }
     }
   }
